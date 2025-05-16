@@ -1,0 +1,11 @@
+{
+  "name": "loader",
+  "version": "1.0.0",
+  "description": "Simple loader page",
+  "scripts": {
+    "start": "serve"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+} 
