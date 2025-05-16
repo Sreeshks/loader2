@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/",
+      "dest": "/public/loader.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/public/$1"
     }
