@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Dots Loader</title>
+    <title>Circular Progress</title>
     <style>
         body {
             display: flex;
@@ -24,32 +24,14 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .dots-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .dot {
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(45deg, #2196F3, #00BCD4);
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2196F3;
             border-radius: 50%;
-            animation: bounce 0.5s ease-in-out infinite;
-        }
-
-        .dot:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .dot:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .dot:nth-child(4) {
-            animation-delay: 0.3s;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
         }
 
         .processing-text {
@@ -77,12 +59,12 @@
             animation: dots 1.5s infinite;
         }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
-            50% {
-                transform: translateY(-20px);
+            100% {
+                transform: rotate(360deg);
             }
         }
 
@@ -117,12 +99,7 @@
 <body>
     <div class="bg-pattern"></div>
     <div class="loader-container">
-        <div class="dots-container">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <div class="loader"></div>
         <div class="processing-text">Processing<span class="dots">...</span></div>
     </div>
 </body>
