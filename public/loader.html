@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +50,45 @@
 <body>
     <div class="loader-container">
         <span class="loader"></span>
-        <div class="processing-text">Processing...</div>
+        <div class="processing-text">Processing Payment...</div>
     </div>
+
+    <script>
+        // Function to get order number from URL path
+        function getOrderNumberFromPath() {
+            const path = window.location.pathname;
+            // Remove leading slash and any trailing slashes
+            const orderNo = path.replace(/^\/|\/$/g, '');
+            return orderNo;
+        }
+
+        // Function to check payment status
+        async function checkPaymentStatus() {
+            const orderNo = getOrderNumberFromPath();
+            if (!orderNo) {
+                alert('Order number is missing!');
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://testapi.pridekerala.com/api/api/paymentclient/paymentstatuscheck?OrderNo=${orderNo}`);
+                const data = await response.json();
+                
+                if (data.status === "true") {
+                    window.location.href = '/success.html';
+                } else {
+                    window.location.href = '/failed.html';
+                }
+            } catch (error) {
+                console.error('Error checking payment status:', error);
+                window.location.href = '/failed.html';
+            }
+        }
+
+        // Check payment status when page loads
+        window.onload = function() {
+            checkPaymentStatus();
+        };
+    </script>
 </body>
 </html>
