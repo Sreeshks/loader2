@@ -1,7 +1,5 @@
-
 {
   "version": 2,
-  "public": true,
   "builds": [
     {
       "src": "public/**",
@@ -9,6 +7,14 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/success.html",
+      "destination": "/public/success.html"
+    },
+    {
+      "source": "/failed.html",
+      "destination": "/public/failed.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/public/loader.html"
